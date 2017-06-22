@@ -1,0 +1,10 @@
+[cursus:children]
+centos
+debian
+
+[centos]
+centos[01:12]       webserver=httpd
+
+[debian]
+debian[01:12]
+

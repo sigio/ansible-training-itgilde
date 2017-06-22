@@ -1,0 +1,11 @@
+---
+
+websites:
+  site1:
+    servername: "server1.example.nl"
+    serveralias: "server1.example.org www.example.org"
+    docroot: "/var/www/server1.example.nl"
+  itgilde:
+    servername: "itgilde.example.nl"
+    serveralias: "www.itgilde.nl"
+    docroot: "/var/www/itgilde"

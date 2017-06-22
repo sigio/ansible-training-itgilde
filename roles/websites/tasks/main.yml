@@ -1,0 +1,12 @@
+---
+
+- name: Template other websites apache configs
+  template: src="websites.conf" dest="/etc/apache2/sites-available/{{item.key}}.conf" owner=root group=root mode=0644
+  with_dict: "{{websites}}"
+  notify: reload apache
+
+- name: Enable apache site configs
+  file: dest="/etc/apache2/sites-enabled/{{item.key}}.conf" src="../sites-available/{{item.key}}.conf" state=link
+  with_dict: "{{websites}}"
+  notify: reload apache
+

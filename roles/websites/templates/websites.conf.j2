@@ -1,0 +1,23 @@
+# {{ ansible_managed }}
+
+# Generic site template
+
+<VirtualHost *:80>
+    ServerName {{item.value.servername}}
+    ServerAlias {{item.value.serveralias}}
+
+    DocumentRoot "{{item.value.docroot}}"
+
+    HostNameLookups off
+    ServerAdmin {{webmaster_mail}}
+
+    <Directory "{{item.value.docroot}}">
+        Options -Indexes
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    CustomLog "/var/log/apache2/{{item.key}}/access.log" combined env=!lb
+    CustomLog "/var/log/apache2/{{item.key}}/intern.log" combined env=intern
+</VirtualHost>
+

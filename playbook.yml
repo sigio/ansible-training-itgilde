@@ -1,0 +1,26 @@
+---
+
+- hosts: all
+  tasks:
+    - name: Wie ben ik
+      command: id
+
+    - name: Installeer essential software
+      yum: name={{item}} state=latest
+      with_items:
+        - pv
+        - screen
+        - openssh
+        - mysql
+      tags:
+        - yum
+        - safe
+        - pkg
+      notify:
+        - een handler
+
+
+
+
+  handlers:
+    - name: een handler
