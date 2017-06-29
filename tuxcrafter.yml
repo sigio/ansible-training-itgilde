@@ -1,0 +1,21 @@
+---
+
+- hosts: localhost
+  vars: 
+    - poort: 22
+  gather_facts: no
+  tasks:
+
+   - name: Zoek een nummer
+     shell: echo $$
+     register: poortnummer
+
+   - name: maak een fact
+     set_fact: 
+       vrijepoort: "{{poortnummer.stdout_lines[0]|int + 10}}"
+
+   - name: result 
+     debug: var=poortnummer
+   - name: result 
+     debug: var=vrijepoort
+
